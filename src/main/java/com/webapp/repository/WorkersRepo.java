@@ -1,5 +1,6 @@
 package com.webapp.repository;
 
+import com.webapp.entity.Department;
 import com.webapp.entity.Role;
 import com.webapp.entity.Worker;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,5 +15,5 @@ import java.util.List;
 public interface WorkersRepo extends JpaRepository<Worker, Long>
 {
     List<Worker> findAllByRoles(Role role);
-    List<Worker> findAllByName(String str);
+    List<Worker> findAllByDepartments(Department department);
 }

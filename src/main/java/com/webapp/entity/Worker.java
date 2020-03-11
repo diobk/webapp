@@ -24,14 +24,20 @@ public class Worker
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
+    @ElementCollection(targetClass = Department.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_department", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Department> departments;
+
     public Worker() { }
 
-    public Worker(String name, String lastname, String pass, Set<Role>  role)
+    public Worker(String name, String lastname, String pass, Set<Role>  role, Set<Department> departments)
     {
         this.name = name;
         this.lastname = lastname;
         this.pass = pass;
         this.roles = role;
+        this.departments = departments;
     }
 
     public Long getId()
@@ -84,6 +90,16 @@ public class Worker
         this.roles = roles;
     }
 
+    public Set<Department> getDepartments()
+    {
+        return departments;
+    }
+
+    public void setDepartments(Set<Department> departments)
+    {
+        this.departments = departments;
+    }
+
     @Override
     public String toString()
     {
@@ -93,6 +109,8 @@ public class Worker
                 ", lastname='" + lastname + '\'' +
                 ", pass='" + pass + '\'' +
                 ", roles=" + roles +
+                ", departments=" + departments +
                 '}';
     }
 }
+//spring.jpa.hibernate.ddl-auto=create

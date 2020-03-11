@@ -1,5 +1,6 @@
 package com.webapp.Controller;
 
+import com.webapp.entity.Department;
 import com.webapp.entity.Role;
 import com.webapp.entity.Worker;
 import com.webapp.repository.WorkersRepo;
@@ -23,11 +24,9 @@ public class MainController
     @GetMapping("/")
     String getAdd(Model model)
     {
-        model.addAttribute("dir", workersRepo.findAllByRoles(Role.DIRECT_IT));
+        workersRepo.save(new Worker("Имя", "Фамилия", "password", Collections.singleton(Role.DIRECT_IT), Collections.singleton(Department.WEB)));
 
-        model.addAttribute("str", "some string");
-
-
+        System.out.println(workersRepo.findAllByDepartments(Department.WEB).get(0).toString());
         return "home";
     }
 }
