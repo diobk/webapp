@@ -20,12 +20,13 @@ public class MainController
     @Autowired
     WorkersRepo workersRepo;
 
-    @GetMapping("/")
+    @GetMapping("/main")
     String getAdd(Model model)
     {
-        //workersRepo.save(new Worker("Имя", "Фамилия", "password", Collections.singleton(Role.DIRECT_IT), Collections.singleton(Department.WEB)));
 
-        System.out.println(workersRepo.findAllByDepartments(Department.WEB).get(0).toString());
-        return "home";
+        model.addAttribute("GEN_DIR", workersRepo.findAllByRoles(Role.WORKER));
+        System.out.println(workersRepo.findAllByRoles(Role.GEN_DIRECT).get(0).toString());
+
+        return "index";
     }
 }

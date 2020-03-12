@@ -1,10 +1,10 @@
-<!DOCTYPE html>
-<html>
+<!DOCTYPE>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
 	<meta charset='utf-8'>
 	<title>Title</title>
-	<link rel='stylesheet' type='text/css' media='screen' href='css/style.css'>
-	<script src='main.js'></script>
+	<link rel='stylesheet' type='text/css' media='screen' href='../static/css/style.css' >
 </head>
 <body>
 	
@@ -12,15 +12,15 @@
 		<div class="tree">
 			<ul>
 				<li>
-					<a href="#">President Director <br>Tetsuo Nakai</a>
+					<!--/*@thymesVar id="GEN_DIR" type="aj"*/-->
+					<a href="#" th:each="dir : ${ GEN_DIR }" th:text="${dir.toString() + '<br>' }">President Director <br>Tetsuo Nakai</a>
 					<ul>
-						<a href="#"> HR & Administration<br>Heli Neo<br>Manager
-						</a>
+<!--						<a href="#"> HR & Administration<br>Heli Neo<br>Manager</a>-->
 
 						<ul>
 							<li>
 								<a href="#">IT Administrator <br>Ericson Ginting<br>Assistant Manager</a>
-								
+
 								<ul>
 
 									<li>
