@@ -23,7 +23,7 @@ public class MainController
     @GetMapping("/")
     String getAdd(Model model)
     {
-        workersRepo.save(new Worker("Имя", "Фамилия", "password", Collections.singleton(Role.DIRECT_IT), Collections.singleton(Department.WEB)));
+        //workersRepo.save(new Worker("Имя", "Фамилия", "password", Collections.singleton(Role.DIRECT_IT), Collections.singleton(Department.WEB)));
 
         System.out.println(workersRepo.findAllByDepartments(Department.WEB).get(0).toString());
         return "home";

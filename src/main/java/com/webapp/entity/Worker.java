@@ -20,15 +20,19 @@ public class Worker
     private String pass;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @CollectionTable(name = "worker_role", joinColumns = @JoinColumn(name = "worker_id"))
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
     @ElementCollection(targetClass = Department.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "user_department", joinColumns = @JoinColumn(name = "user_id"))
+    @CollectionTable(name = "worker_department", joinColumns = @JoinColumn(name = "worker_id"))
     @Enumerated(EnumType.STRING)
     private Set<Department> departments;
 
+    @ElementCollection(targetClass = Position.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "worker_position" , joinColumns = @JoinColumn(name = "worker_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Position> positions;
 
     public Worker() { }
 
@@ -39,6 +43,16 @@ public class Worker
         this.pass = pass;
         this.roles = role;
         this.departments = departments;
+    }
+
+    public Worker(String name, String lastname, String pass, Set<Role>  role, Set<Department> departments, Set<Position> positions)
+    {
+        this.name = name;
+        this.lastname = lastname;
+        this.pass = pass;
+        this.roles = role;
+        this.departments = departments;
+        this.positions = positions;
     }
 
     public Long getId()
