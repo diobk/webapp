@@ -29,6 +29,7 @@ public class Worker
     @Enumerated(EnumType.STRING)
     private Set<Department> departments;
 
+
     public Worker() { }
 
     public Worker(String name, String lastname, String pass, Set<Role>  role, Set<Department> departments)
