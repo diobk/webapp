@@ -4,25 +4,25 @@
 <head>
 	<meta charset='utf-8'>
 	<title>Title</title>
-	<link rel='stylesheet' type='text/css' media='screen' href='../static/css/style.css' >
+<!--	<link rel="stylesheet" type="text/css" media="screen" href="../static/css/style.css" />-->
+	<link href="../static/css/style.css" th:href="@{../static/css/style.css}" rel="stylesheet">
 </head>
 <body>
-	
+	<div class="class1">
+		asdcacdacsascacs
+	</div>
 	<div class="container">
 		<div class="tree">
 			<ul>
 				<li>
 					<!--/*@thymesVar id="GEN_DIR" type="aj"*/-->
-					<a href="#" th:each="dir : ${ GEN_DIR }" th:text="${dir.toString() + '<br>' }">President Director <br>Tetsuo Nakai</a>
+					<a href="#" th:each="dir : ${ GEN_DIR }" th:text="${dir.toString() }">President Director <br>Tetsuo Nakai</a>
 					<ul>
 <!--						<a href="#"> HR & Administration<br>Heli Neo<br>Manager</a>-->
-
 						<ul>
 							<li>
 								<a href="#">IT Administrator <br>Ericson Ginting<br>Assistant Manager</a>
-
 								<ul>
-
 									<li>
 										<a href="#">IT Engineer <br>I Wayan Purushottama<br>Engineer</a>
 										<ul>
@@ -31,11 +31,9 @@
 											</li>
 										</ul>
 									</li>
-
 								</ul>
 							</li>
 						</ul>
-
 					</ul>
 				</li>
 			</ul>

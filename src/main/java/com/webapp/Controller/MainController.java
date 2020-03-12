@@ -21,7 +21,7 @@ public class MainController
     WorkersRepo workersRepo;
 
     @GetMapping("/main")
-    String getAdd(Model model)
+    public String getAdd(Model model)
     {
 
         model.addAttribute("GEN_DIR", workersRepo.findAllByRoles(Role.WORKER));
