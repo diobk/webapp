@@ -10,12 +10,50 @@
 <body>
 	<div class="container">
 		<div class="tree">
+
 			<ul>
 				<li>
-					<a href="#" th:each="dir : ${ GEN_DIR }" th:text="${dir.name + ' ' + dir.lastname }">President Director <br>Tetsuo Nakai</a>
+
+					<a href="#" th:each="dir : ${gen_dir}" th:utext="${ 'Ген директор <br>' + dir.name + ' <br> ' + dir.lastname  }"></a>
 					<ul>
-<!--						<a href="#"> HR & Administration<br>Heli Neo<br>Manager</a>-->
+						<!--						<a href="#"> HR & Administration<br>Heli Neo<br>Manager</a>-->
 						<ul>
+							<li th:each="dir_fin : ${ dir_fin }">
+								<ul>
+									<a href="#" th:utext="'Главный бухгалтер <br>' + ${ dir_fin.name + ' <br> ' + dir_fin.lastname } "></a>
+								</ul>
+								<ul>
+									<li>
+										<ul>
+											<li>
+												<a href="#">IT Engineer <br>I Wayan Purushottama<br>Engineer</a>
+											</li>
+											<li><a href="#">IT Engineer <br>I Wayan Purushottama<br>Engineer</a></li>
+											<li><a href="#">IT Engineer <br>I Wayan Purushottama<br>Engineer</a></li>
+										</ul>
+
+
+										<ul>
+											<li>
+												<a href="#">IT Support<br>Juanda F Butar Butar<br>Assistant Engineer</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
+							<li>
+								<a href="#">IT Administrator <br>Ericson Ginting<br>Assistant Manager</a>
+								<ul>
+									<li>
+										<a href="#">IT Engineer <br>I Wayan Purushottama<br>Engineer</a>
+										<ul>
+											<li>
+												<a href="#">IT Support<br>Juanda F Butar Butar<br>Assistant Engineer</a>
+											</li>
+										</ul>
+									</li>
+								</ul>
+							</li>
 							<li>
 								<a href="#">IT Administrator <br>Ericson Ginting<br>Assistant Manager</a>
 								<ul>
@@ -33,6 +71,7 @@
 					</ul>
 				</li>
 			</ul>
+
 		</div>
 	</div>
 </body>
