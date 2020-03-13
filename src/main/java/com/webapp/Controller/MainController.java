@@ -24,7 +24,7 @@ public class MainController
     public String getAdd(Model model)
     {
 
-        model.addAttribute("GEN_DIR", workersRepo.findAllByRoles(Role.WORKER));
+        model.addAttribute("GEN_DIR", workersRepo.findAllByRoles(Role.GEN_DIRECT));
         System.out.println(workersRepo.findAllByRoles(Role.GEN_DIRECT).get(0).toString());
 
         return "index";

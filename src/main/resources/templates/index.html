@@ -8,15 +8,11 @@
 	<link href="../static/css/style.css" th:href="@{../static/css/style.css}" rel="stylesheet">
 </head>
 <body>
-	<div class="class1">
-		asdcacdacsascacs
-	</div>
 	<div class="container">
 		<div class="tree">
 			<ul>
 				<li>
-					<!--/*@thymesVar id="GEN_DIR" type="aj"*/-->
-					<a href="#" th:each="dir : ${ GEN_DIR }" th:text="${dir.toString() }">President Director <br>Tetsuo Nakai</a>
+					<a href="#" th:each="dir : ${ GEN_DIR }" th:text="${dir.name + ' ' + dir.lastname }">President Director <br>Tetsuo Nakai</a>
 					<ul>
 <!--						<a href="#"> HR & Administration<br>Heli Neo<br>Manager</a>-->
 						<ul>
