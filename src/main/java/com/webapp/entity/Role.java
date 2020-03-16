@@ -1,21 +1,23 @@
 package com.webapp.entity;
 
 
+import javax.persistence.Entity;
 
 public enum Role
 {
     GEN_DIRECT,
 
+
     DIRECT_IT,
-        LEAD_FRONT,
-        LEAD_BACK,
+        LEAD_IT,
+            FRONT,
+            BACK,
 
     DIRECT_FIN,
-        LEAD_BUG,
+        LEAD_FIN,
+            ECO,
 
     DIRECT_PERS,
-        LEAD_ADAPT,
-
-    WORKER
-
+        LEAD_PERS,
+            CPEC_ADAPT
 }

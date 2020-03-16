@@ -1,12 +1,16 @@
 package com.webapp.entity;
 
+
+import javax.persistence.Entity;
+
+
 public enum Department
 {
     GEN_DEP,
 
-    WEB,
+    WEB_DEP,
 
-    FINANCE,
+    FINANCE_DEP,
 
-    PESONAL
+    PESONAL_DEP
 }

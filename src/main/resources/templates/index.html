@@ -1,78 +1,41 @@
-<!DOCTYPE>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
-	  xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
 <head>
-	<meta charset='utf-8'>
-	<title>Title</title>
-<!--	<link rel="stylesheet" type="text/css" media="screen" href="../static/css/style.css" />-->
-	<link href="../static/css/style.css" th:href="@{../static/css/style.css}" rel="stylesheet">
+    <meta charset='utf-8'>
+    <title>Title</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='../static/css/style.css'>
 </head>
+
 <body>
-	<div class="container">
-		<div class="tree">
+<div class="tree">
 
-			<ul>
-				<li>
+    <ul >
+        <li><a href="#" th:utext="${ 'Генеральный директор <br>' + gen_dir.get(0).name + ' ' + gen_dir.get(0).lastname}"></a>
 
-					<a href="#" th:each="dir : ${gen_dir}" th:utext="${ 'Ген директор <br>' + dir.name + ' <br> ' + dir.lastname  }"></a>
-					<ul>
-						<!--						<a href="#"> HR & Administration<br>Heli Neo<br>Manager</a>-->
-						<ul>
-							<li th:each="dir_fin : ${ dir_fin }">
-								<ul>
-									<a href="#" th:utext="'Главный бухгалтер <br>' + ${ dir_fin.name + ' <br> ' + dir_fin.lastname } "></a>
-								</ul>
-								<ul>
-									<li>
-										<ul>
-											<li>
-												<a href="#">IT Engineer <br>I Wayan Purushottama<br>Engineer</a>
-											</li>
-											<li><a href="#">IT Engineer <br>I Wayan Purushottama<br>Engineer</a></li>
-											<li><a href="#">IT Engineer <br>I Wayan Purushottama<br>Engineer</a></li>
-										</ul>
+            <ul>
+
+                <li><a href="#" th:utext="'II директор <br>' + dir_it.get(0).name + ' ' + dir_it.get(0).lastname "></a>
+                <ul>
+
+                    <li><a href="#" th:utext=" ' Руководитель IT отдела ' + lead_it.get(0).name + ' ' + lead_it.get(0).lastname "></a>
+                        <ul th:each="work : ${ worker_it }">
+                            <li><a href="#"  th:utext=""></a></li>
+                        </ul>
+                    </li>
+
+                </ul>
 
 
-										<ul>
-											<li>
-												<a href="#">IT Support<br>Juanda F Butar Butar<br>Assistant Engineer</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">IT Administrator <br>Ericson Ginting<br>Assistant Manager</a>
-								<ul>
-									<li>
-										<a href="#">IT Engineer <br>I Wayan Purushottama<br>Engineer</a>
-										<ul>
-											<li>
-												<a href="#">IT Support<br>Juanda F Butar Butar<br>Assistant Engineer</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-							<li>
-								<a href="#">IT Administrator <br>Ericson Ginting<br>Assistant Manager</a>
-								<ul>
-									<li>
-										<a href="#">IT Engineer <br>I Wayan Purushottama<br>Engineer</a>
-										<ul>
-											<li>
-												<a href="#">IT Support<br>Juanda F Butar Butar<br>Assistant Engineer</a>
-											</li>
-										</ul>
-									</li>
-								</ul>
-							</li>
-						</ul>
-					</ul>
-				</li>
-			</ul>
 
-		</div>
-	</div>
+            </li>
+
+            </ul>
+        </li>
+    </ul>
+
+</div>
 </body>
+
 </html>
