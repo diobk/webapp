@@ -19,6 +19,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter
     public void addViewControllers(ViewControllerRegistry registry)
     {
         registry.addViewController("/login").setViewName("login");
+        registry.addViewController("/home").setViewName("home");
     }
 
     @Override
@@ -27,16 +28,16 @@ public class MvcConfig extends WebMvcConfigurerAdapter
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
 
-    @Bean(name = "dataSource")
-    public DriverManagerDataSource dataSource()
-    {
-        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-        driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
-        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-        driverManagerDataSource.setUsername("postgres");
-        driverManagerDataSource.setPassword("123456");
-        return driverManagerDataSource;
-    }
+//    @Bean(name = "dataSource")
+//    public DriverManagerDataSource dataSource()
+//    {
+//        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+//        driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
+//        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
+//        driverManagerDataSource.setUsername("postgres");
+//        driverManagerDataSource.setPassword("admin");
+//        return driverManagerDataSource;
+//    }
 
 
 }

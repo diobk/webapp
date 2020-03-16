@@ -2,6 +2,7 @@ package com.webapp.config;
 
 import org.hibernate.engine.jdbc.connections.internal.DatasourceConnectionProviderImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -11,6 +12,7 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
 import javax.sql.DataSource;
@@ -21,7 +23,8 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
     @Autowired
-    DataSource datasource;
+    @Qualifier("dataSource")
+    private DataSource datasource;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception
@@ -40,9 +43,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
     }
 
 //    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth)
+//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception
 //    {
+//        auth.jdbcAuthentication()
+//                .dataSource(datasource)
+//                .passwordEncoder(NoOpPasswordEncoder.getInstance())
+//                .usersByUsernameQuery("select name, pass from worker where name = ?")
+//                .groupAuthoritiesByUsername("select name, pass from worker where name = ?, pass = ?");
+//    }
 //
+//    @Override
+//    protected void configure(AuthenticationManagerBuilder auth) throws Exception
+//    {
+//        auth.jdbcAuthentication()
+//                .dataSource(datasource)
+//            .passwordEncoder(NoOpPasswordEncoder.getInstance())
+//            .usersByUsernameQuery("select name, pass from worker where name = ?")
+//            .groupAuthoritiesByUsername("select name, pass from worker where name = ?, pass = ?");
 //    }
 
     @Bean
