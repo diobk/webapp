@@ -1,7 +1,6 @@
 package com.webapp.entity;
 
 
-import javax.persistence.Entity;
 
 
 public enum Department
@@ -12,5 +11,5 @@ public enum Department
 
     FINANCE_DEP,
 
-    PESONAL_DEP
+    PERSONAL_DEP
 }

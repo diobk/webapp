@@ -1,7 +1,6 @@
 package com.webapp.entity;
 
 
-import javax.persistence.Entity;
 
 public enum Role
 {
@@ -19,5 +18,13 @@ public enum Role
 
     DIRECT_PERS,
         LEAD_PERS,
-            CPEC_ADAPT
+            CPEC_ADAPT,
+
+    GEN_DEP,
+
+    WEB_DEP,
+
+    FINANCE_DEP,
+
+    PERSONAL_DEP
 }

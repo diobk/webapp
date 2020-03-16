@@ -1,12 +1,19 @@
 package com.webapp.config;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.InternalResourceView;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+
+import java.sql.DriverManager;
 
 @Configuration
-public class MvcConfig implements WebMvcConfigurer
+public class MvcConfig extends WebMvcConfigurerAdapter
 {
 
     public void addViewControllers(ViewControllerRegistry registry)
@@ -19,4 +26,17 @@ public class MvcConfig implements WebMvcConfigurer
     {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
+
+    @Bean(name = "dataSource")
+    public DriverManagerDataSource dataSource()
+    {
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
+        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
+        driverManagerDataSource.setUsername("postgres");
+        driverManagerDataSource.setPassword("123456");
+        return driverManagerDataSource;
+    }
+
+
 }

@@ -27,15 +27,18 @@ public class Worker
     @Enumerated(EnumType.STRING)
     private Set<Department> departments;
 
+    private String post;
+
     public Worker() { }
 
-    public Worker(String name, String lastname, String pass, Set<Role>  role, Set<Department> departments)
+    public Worker(String name, String lastname, String pass, String post, Set<Role> role, Set<Department> departments)
     {
         this.name = name;
         this.lastname = lastname;
         this.pass = pass;
         this.roles = role;
         this.departments = departments;
+        this.post = post;
     }
 
     public Long getId()
@@ -98,6 +101,16 @@ public class Worker
         this.departments = departments;
     }
 
+    public String getPost()
+    {
+        return post;
+    }
+
+    public void setPost(String post)
+    {
+        this.post = post;
+    }
+
     @Override
     public String toString()
     {
@@ -108,6 +121,7 @@ public class Worker
                 ", pass='" + pass + '\'' +
                 ", roles=" + roles +
                 ", departments=" + departments +
+                ", post='" + post + '\'' +
                 '}';
     }
 }
