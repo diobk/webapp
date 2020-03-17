@@ -9,7 +9,7 @@ public class Worker
 {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private long id;
 
     private String name;
 
@@ -31,12 +31,12 @@ public class Worker
 
     public Worker() { }
 
-    public Worker(String name, String lastname, String pass, String post, Set<Role> role, Set<Department> departments)
+    public Worker(String name, String lastname, String pass, String post, Set<Role> roles, Set<Department> departments)
     {
         this.name = name;
         this.lastname = lastname;
         this.pass = pass;
-        this.roles = role;
+        this.roles = roles;
         this.departments = departments;
         this.post = post;
     }

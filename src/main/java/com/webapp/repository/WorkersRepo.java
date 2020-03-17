@@ -1,6 +1,5 @@
 package com.webapp.repository;
 
-import com.webapp.entity.Department;
 import com.webapp.entity.Role;
 import com.webapp.entity.Worker;
 import org.springframework.data.jpa.repository.JpaRepository;
