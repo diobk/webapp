@@ -22,7 +22,7 @@ public class Worker
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @ElementCollection(targetClass = Department.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "worker_department", joinColumns = @JoinColumn(name = "worker_id"))
     @Enumerated(EnumType.STRING)
     private Set<Department> departments;

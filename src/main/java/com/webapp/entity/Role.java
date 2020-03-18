@@ -4,7 +4,7 @@ package com.webapp.entity;
 
 public enum Role
 {
-    GEN_DIRECT,
+    GEN_DIR,
 
     DIR,
 

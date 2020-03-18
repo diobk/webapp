@@ -26,64 +26,16 @@ public class MainController
     public String getMain(Model model)
     {
 
+        model.addAttribute("gen_dir", workersRepo.findAllByRoles(Role.GEN_DIR).get(0));
 
+        model.addAttribute("Dir", workersRepo.findAllByRoles(Role.DIR));
 
-//        model.addAttribute("gen_dir", workersRepo.findAllByRoles(Role.GEN_DIRECT).get(0));
-//
-//        model.addAttribute("Dir", workersRepo.findAllByRoles(Role.DIR));
-//
-//        model.addAttribute("Lead", workersRepo.findAllByRoles(Role.LEAD));
-//
-//        model.addAttribute("Worker", workersRepo.findAllByRoles(Role.WORKER));
+        model.addAttribute("Lead", workersRepo.findAllByRoles(Role.LEAD));
+
+        model.addAttribute("Worker", workersRepo.findAllByRoles(Role.WORKER));
 
         System.out.println(workersRepo.findAll().size());
-        System.out.println(1);
-        System.out.println(workersRepo.findAll().size());
-        System.out.println(workersRepo.findAllByRoles(Role.DIR));
-        System.out.println(workersRepo.findAllByRoles(Role.LEAD));
-        System.out.println(workersRepo.findAllByRoles(Role.WORKER));
-        System.out.println(2);
 
-        try
-        {
-            System.out.println(2);
-            model.addAttribute("gen_dir", workersRepo.findAllByRoles(Role.GEN_DIRECT).get(0));
-
-            model.addAttribute("Dir", workersRepo.findAllByRoles(Role.DIR));
-
-            model.addAttribute("Lead", workersRepo.findAllByRoles(Role.LEAD));
-
-            model.addAttribute("Worker", workersRepo.findAllByRoles(Role.WORKER));
-            System.out.println(3);
-
-            model.addAttribute("gen_dir", workersRepo.findAllByRoles(Role.GEN_DIRECT).get(0));
-
-            model.addAttribute("Dir", workersRepo.findAllByRoles(Role.DIR));
-
-            model.addAttribute("Lead", workersRepo.findAllByRoles(Role.LEAD));
-
-            model.addAttribute("Worker", workersRepo.findAllByRoles(Role.WORKER));
-            System.out.println(311111111);
-
-        }
-        catch (Throwable th)
-        {
-            System.out.println(4);
-
-
-            try
-            {
-                System.out.println(123);
-                System.out.println(workersRepo.findAll().size());
-                System.out.println(213);
-            }
-            catch (Throwable th23)
-            {
-                System.out.println(12312);
-            }
-        }
-
-        System.out.println(5);
 
 
         return "index";

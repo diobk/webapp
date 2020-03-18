@@ -12,7 +12,5 @@ import java.util.ArrayList;
 @Repository
 public interface WorkersRepo extends JpaRepository<Worker, Long>
 {
-
-
     ArrayList<Worker> findAllByRoles(Role role);
 }

@@ -6,6 +6,7 @@ import com.webapp.entity.Worker;
 import com.webapp.repository.WorkersRepo;
 import org.aspectj.weaver.ISourceContext;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,9 +33,7 @@ public class NewController
     @PostMapping("/addWorker")
     public String add(Worker worker)
     {
-//        Worker worker = new Worker(name, lastname, pass, post, Collections.singleton(roles), Collections.singleton(departments));
-        System.out.println(worker.toString());
-        System.out.println("Asdasafsfasf");
+        workersRepo.save(worker);
         return "redirect:/addWorker";
     }
 }

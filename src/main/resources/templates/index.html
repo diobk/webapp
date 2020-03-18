@@ -13,7 +13,6 @@
 
     <ul>
         <li><a href="#" th:utext="${ gen_dir.post + '<br>' + gen_dir.name + ' ' + gen_dir.lastname}"></a>
-
             <ul>
 
                 <th:block th:each="dir : ${ Dir }">
@@ -45,60 +44,6 @@
             </ul>
         </li>
     </ul>
-
-<h1>asfasf</h1>
-
-
-<!--    <ul>-->
-<!--        <li><a href="#" th:utext="${ gen_dir.post + '<br>' + gen_dir.name + ' ' + gen_dir.lastname}"></a>-->
-
-<!--            <ul>-->
-
-<!--                <li><a href="#" th:utext=" ${ dir_it.get(0).post + '<br>' + dir_it.get(0).name + ' ' + dir_it.get(0).lastname } "></a>-->
-<!--                    <ul>-->
-
-<!--                        <li th:each="leadIT : ${lead_it}"><a href="#" th:utext=" ${ leadIT.post + '<br>' + leadIT.name + ' ' + leadIT.lastname } "></a>-->
-<!--                            <ul th:each="itDep : ${it_dep}">-->
-<!--                                <a href="#" th:utext=" ${ itDep.post + '<br>' + itDep.name + ' ' + itDep.lastname} "></a>-->
-<!--                            </ul>-->
-<!--                        </li>-->
-
-<!--                    </ul>-->
-<!--                </li>-->
-
-<!--                <li><a href="#" th:utext=" ${ dir_fin.get(0).post + '<br>' + dir_fin.get(0).name + ' ' + dir_fin.get(0).lastname } "></a>-->
-<!--                    <ul>-->
-
-<!--                        <li th:each="lead_f : ${lead_fin}"><a href="#" th:utext=" ${ lead_f.post + '<br>' + lead_f.name + ' ' + lead_f.lastname } "></a>-->
-
-<!--                            <ul th:each="finDep : ${fin_dep}">-->
-<!--                                <a href="#" th:utext=" ${ finDep.post + '<br>' + finDep.name + ' ' + finDep.lastname} "></a>-->
-<!--                            </ul>-->
-
-<!--                        </li>-->
-
-<!--                    </ul>-->
-<!--                </li>-->
-
-<!--                <li><a href="#" th:utext=" ${ dir_per.get(0).post + '<br>' + dir_per.get(0).name + ' ' + dir_per.get(0).lastname } "></a>-->
-<!--                    <ul>-->
-
-<!--                        <li th:each=" leadPer : ${ lead_per }"><a href="#" th:utext=" ${ leadPer.post + '<br>' + leadPer.name + ' ' + leadPer.lastname } "></a>-->
-
-<!--                            <ul th:each="persDep : ${ pers_dep }">-->
-<!--                                <a href="#" th:utext=" ${ persDep.post + '<br>' + persDep.name + ' ' + persDep.lastname} "></a>-->
-<!--                            </ul>-->
-
-<!--                        </li>-->
-
-<!--                    </ul>-->
-<!--                </li>-->
-
-
-<!--            </ul>-->
-
-<!--        </li>-->
-<!--    </ul>-->
 
 </div>
 </body>

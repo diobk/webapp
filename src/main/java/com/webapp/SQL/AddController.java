@@ -21,7 +21,7 @@ public class AddController
     @GetMapping("/add")
     void addWorker()
     {
-        workersRepo.save(new Worker("Имя1", "Фамилия", "password", "Генеральный директор", Collections.singleton(Role.GEN_DIRECT), Collections.singleton(Department.GEN_DEP)));
+        workersRepo.save(new Worker("Имя1", "Фамилия", "password", "Генеральный директор", Collections.singleton(Role.GEN_DIR), Collections.singleton(Department.GEN_DEP)));
 
 
         workersRepo.save(new Worker("Имя2", "Фамилия", "password", "IT директор", Collections.singleton(Role.DIR), Collections.singleton(Department.WEB_DEP)));
