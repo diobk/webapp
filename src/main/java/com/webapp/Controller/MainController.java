@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
@@ -25,26 +26,65 @@ public class MainController
     public String getMain(Model model)
     {
 
-        model.addAttribute("gen_dir", workersRepo.findAllByRoles(Role.GEN_DIRECT).get(0));
 
-        model.addAttribute("dir_it", workersRepo.findAllByRoles(Role.DIRECT_IT));
-        model.addAttribute("dir_fin", workersRepo.findAllByRoles(Role.DIRECT_FIN));
-        model.addAttribute("dir_per", workersRepo.findAllByRoles(Role.DIRECT_PERS));
 
-        model.addAttribute("lead_it", workersRepo.findAllByRoles(Role.LEAD_IT));
-        model.addAttribute("lead_fin", workersRepo.findAllByRoles(Role.LEAD_FIN));
-        model.addAttribute("lead_per", workersRepo.findAllByRoles(Role.LEAD_PERS));
-
-        ArrayList itDep = workersRepo.findAllByRoles(Role.FRONT);
-        itDep.addAll(workersRepo.findAllByRoles(Role.BACK));
-        model.addAttribute("it_dep", itDep);
-        model.addAttribute("fin_dep", workersRepo.findAllByRoles(Role.ECO));
-        model.addAttribute("pers_dep", workersRepo.findAllByRoles(Role.CPEC_ADAPT));
-
+//        model.addAttribute("gen_dir", workersRepo.findAllByRoles(Role.GEN_DIRECT).get(0));
+//
+//        model.addAttribute("Dir", workersRepo.findAllByRoles(Role.DIR));
+//
+//        model.addAttribute("Lead", workersRepo.findAllByRoles(Role.LEAD));
+//
+//        model.addAttribute("Worker", workersRepo.findAllByRoles(Role.WORKER));
 
         System.out.println(workersRepo.findAll().size());
+        System.out.println(1);
+        System.out.println(workersRepo.findAll().size());
+        System.out.println(workersRepo.findAllByRoles(Role.DIR));
+        System.out.println(workersRepo.findAllByRoles(Role.LEAD));
+        System.out.println(workersRepo.findAllByRoles(Role.WORKER));
+        System.out.println(2);
 
-        System.out.println(model.getAttribute("it_dep"));
+        try
+        {
+            System.out.println(2);
+            model.addAttribute("gen_dir", workersRepo.findAllByRoles(Role.GEN_DIRECT).get(0));
+
+            model.addAttribute("Dir", workersRepo.findAllByRoles(Role.DIR));
+
+            model.addAttribute("Lead", workersRepo.findAllByRoles(Role.LEAD));
+
+            model.addAttribute("Worker", workersRepo.findAllByRoles(Role.WORKER));
+            System.out.println(3);
+
+            model.addAttribute("gen_dir", workersRepo.findAllByRoles(Role.GEN_DIRECT).get(0));
+
+            model.addAttribute("Dir", workersRepo.findAllByRoles(Role.DIR));
+
+            model.addAttribute("Lead", workersRepo.findAllByRoles(Role.LEAD));
+
+            model.addAttribute("Worker", workersRepo.findAllByRoles(Role.WORKER));
+            System.out.println(311111111);
+
+        }
+        catch (Throwable th)
+        {
+            System.out.println(4);
+
+
+            try
+            {
+                System.out.println(123);
+                System.out.println(workersRepo.findAll().size());
+                System.out.println(213);
+            }
+            catch (Throwable th23)
+            {
+                System.out.println(12312);
+            }
+        }
+
+        System.out.println(5);
+
 
         return "index";
     }
