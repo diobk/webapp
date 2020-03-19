@@ -7,17 +7,34 @@
     <title>Title</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../static/css/style.css'/>
     <link rel="stylesheet" type="text/css" href="../static/css/style1.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css"
+          integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
     <script src="/js/main.js"></script>
     <script>
         function viewDiv(className)
         {
-            document.getElementsByClassName("class1")[0].style.display = "block";
+
             document.getElementsByClassName(className.toString())[0].style.display = "block";
+            document.getElementsByClassName("backGround")[0].style.display = "block";
         }
         function notViewDiv(className)
         {
             document.getElementsByClassName(className.toString())[0].style.display = "none";
-            document.getElementsByClassName("class1")[0].style.display = "none";
+            document.getElementsByClassName("backGround")[0].style.display = "none";
+        }
+        function f1(id)
+        {
+            var x = new XMLHttpRequest();
+            x.open("GET", "http://localhost:8080/delworker/" + id, true);
+            x.onload = function (){
+                // alert( x.responseText);
+                location.reload();
+            }
+            x.send(null);
         }
     </script>
 </head>
@@ -26,24 +43,27 @@
 <div class="tree">
 
     <ul>
-        <li><a href="#" th:utext="${ gen_dir.post + '<br>' + gen_dir.name + ' ' + gen_dir.lastname}"></a>
+        <li><a href="#" th:utext="${ gen_dir.post + '<br>' + gen_dir.name + ' ' + gen_dir.lastname}"
+               th:attr="onclick=|viewDiv('${ 'div' + gen_dir.id}');|"/>
             <ul>
 
                 <th:block th:each="dir : ${ Dir }">
 
-                    <li><a href="#" th:utext=" ${ dir.post + '<br>' + dir.name + ' ' + dir.lastname } "></a>
+                    <li><a href="#" th:utext=" ${ dir.post + '<br>' + dir.name + ' ' + dir.lastname } "
+                           th:attr="onclick=|viewDiv('${ 'div' + dir.id}');|"/>
 
                         <th:block th:each="lead : ${ Lead }" th:if="${lead.departments == dir.departments}">
 
                             <ul>
 
-                                <li ><a href="#" th:utext=" ${ lead.post + '<br>' + lead.name + ' ' + lead.lastname } ">lead</a>
+                                <li ><a href="#" th:utext=" ${ lead.post + '<br>' + lead.name + ' ' + lead.lastname } "
+                                        th:attr="onclick=|viewDiv('${ 'div' + lead.id}');|"/>
 
                                     <th:block th:each="worker : ${ Worker }" th:if="${ worker.departments == lead.departments }">
                                         <ul>
                                             <a href="#"
                                                th:attr="onclick=|viewDiv('${ 'div' + worker.id}');|"
-                                               th:utext="${ worker.post + '<br>' + worker.name + ' ' + worker.lastname }"></a>
+                                               th:utext="${ worker.post + '<br>' + worker.name + ' ' + worker.lastname }"/>
                                         </ul>
                                     </th:block>
 
@@ -64,15 +84,31 @@
 </div>
 
     <th:block th:each="worker : ${ AllWorker }">
-        <div class="class1" th:attr="onclick=|notViewDiv('${ 'div' + worker.id}');|">
-            <div th:attr="class=|${ 'div' + worker.id} window|">
-                <label th:utext="${worker.name + '<br><br>'}"></label>
-                <label th:utext="${worker.lastname + '<br><br>'}"></label>
-                <label th:utext="${worker.post + '<br><br>'}"></label>
-                <label th:utext="${worker.roles + '<br><br>'}"></label>
-                <label th:utext="${worker.departments + '<br><br>'}"></label>
+        <div th:attr="onclick=|notViewDiv('${ 'div' + worker.id}');|">
+            <div th:attr="class=|${ 'div' + worker.id} window|" >
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close" th:attr="onclick=|notViewDiv('${ 'div' + worker.id}');|" >
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <label th:utext="${worker.name }"></label> <br><br>
+                            <label th:utext="${worker.lastname }"></label> <br><br>
+                            <label th:utext="${worker.post }"></label> <br><br>
+                            <label th:utext="${worker.roles }"></label> <br><br>
+                            <label th:utext="${worker.departments }"></label> <br><br>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal" th:attr="onclick=|f1('${worker.id}');|">Уволить</button>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </th:block>
 
 </body>

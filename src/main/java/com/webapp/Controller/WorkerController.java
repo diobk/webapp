@@ -11,9 +11,11 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.annotation.security.RolesAllowed;
+
 
 @Controller
-public class NewController
+public class WorkerController
 {
     @Autowired
     private WorkersRepo workersRepo;
@@ -34,9 +36,11 @@ public class NewController
     }
 
     @GetMapping("/delworker/{id}")
+    @RolesAllowed("")
     public String delWorker(@PathVariable("id") Long id)
     {
         System.out.println(workersRepo.findById(id));
+        workersRepo.delete(workersRepo.findById(id).get());
         return "redirect:/main";
     }
 }

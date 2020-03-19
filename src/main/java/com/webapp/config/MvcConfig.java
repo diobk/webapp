@@ -19,7 +19,7 @@ public class MvcConfig extends WebMvcConfigurerAdapter
     public void addViewControllers(ViewControllerRegistry registry)
     {
         registry.addViewController("/login").setViewName("login");
-        registry.addViewController("/home").setViewName("home");
+//        registry.addViewController("/home").setViewName("home");
     }
 
     @Override
@@ -27,6 +27,8 @@ public class MvcConfig extends WebMvcConfigurerAdapter
     {
         registry.addResourceHandler("/static/**").addResourceLocations("classpath:/static/");
     }
+
+
 
 //    @Bean(name = "dataSource")
 //    public DriverManagerDataSource dataSource()
