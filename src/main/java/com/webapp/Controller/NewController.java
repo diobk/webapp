@@ -9,11 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.InvalidDataAccessApiUsageException;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -22,7 +18,7 @@ public class NewController
     @Autowired
     private WorkersRepo workersRepo;
 
-    @GetMapping("/addWorker")
+    @GetMapping("/addworker")
     public String addWorker(Model model)
     {
         model.addAttribute("role", Role.values());
@@ -30,10 +26,17 @@ public class NewController
         return "addWorker";
     }
 
-    @PostMapping("/addWorker")
+    @PostMapping("/addworker")
     public String add(Worker worker)
     {
         workersRepo.save(worker);
         return "redirect:/addWorker";
+    }
+
+    @GetMapping("/delworker/{id}")
+    public String delWorker(@PathVariable("id") Long id)
+    {
+        System.out.println(workersRepo.findById(id));
+        return "redirect:/main";
     }
 }

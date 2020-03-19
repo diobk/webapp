@@ -34,7 +34,7 @@ public class MainController
 
         model.addAttribute("Worker", workersRepo.findAllByRoles(Role.WORKER));
 
-        System.out.println(workersRepo.findAll().size());
+        model.addAttribute("AllWorker", workersRepo.findAll());
 
 
 
