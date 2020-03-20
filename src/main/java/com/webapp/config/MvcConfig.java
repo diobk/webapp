@@ -29,17 +29,16 @@ public class MvcConfig extends WebMvcConfigurerAdapter
     }
 
 
-
-//    @Bean(name = "dataSource")
-//    public DriverManagerDataSource dataSource()
-//    {
-//        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
-//        driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
-//        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
-//        driverManagerDataSource.setUsername("postgres");
-//        driverManagerDataSource.setPassword("admin");
-//        return driverManagerDataSource;
-//    }
+    @Bean(name = "ds")
+    public DriverManagerDataSource dataSource()
+    {
+        DriverManagerDataSource driverManagerDataSource = new DriverManagerDataSource();
+        driverManagerDataSource.setDriverClassName("org.postgresql.Driver");
+        driverManagerDataSource.setUrl("jdbc:postgresql://localhost:5432/postgres");
+        driverManagerDataSource.setUsername("postgres");
+        driverManagerDataSource.setPassword("123456");
+        return driverManagerDataSource;
+    }
 
 
 }

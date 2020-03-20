@@ -5,20 +5,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Role;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.provisioning.InMemoryUserDetailsManager;
-import org.springframework.test.web.reactive.server.XpathAssertions;
 
 import javax.sql.DataSource;
+import java.lang.reflect.Method;
 
 
 @Configuration
@@ -26,16 +22,20 @@ import javax.sql.DataSource;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 {
     @Autowired
-    @Qualifier("dataSource")
+    @Qualifier("ds")
     private DataSource datasource;
+
+    @Autowired
+    UserDetailService userDetailService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception
     {
         http
+                .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers( "/main", "/registration").permitAll()
-                    .antMatchers("/add", "/new", "/static/**", "/addWorker", "/delworker/**").permitAll()
+                    .antMatchers( "/main", "/login").permitAll()
+                    .antMatchers("/add", "/static/**", "/addWorker", "/delworker/**").permitAll()
                     .anyRequest().authenticated()
                 .and()
                     .formLogin()
@@ -49,58 +49,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                     .permitAll();
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception
-    {
-        auth.userDetailsService(new UserDetailService());
-    }
-
-
-
+    @SuppressWarnings("deprecation")
     @Bean
     public PasswordEncoder passwordEncoder()
     {
         return NoOpPasswordEncoder.getInstance();
     }
 
-//    @SuppressWarnings("deprecation")
-//    @Bean
-//    public  NoOpPasswordEncoder noOpPasswordEncoder()
-//    {
-//        return (NoOpPasswordEncoder) noOpPasswordEncoder().getInstance();
-//    }
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception
+    {
+        auth.userDetailsService(userDetailService);
+    }
 
-    //    @Autowired
-//    public void configAuthentication(AuthenticationManagerBuilder auth) throws Exception
-//    {
-//        auth.jdbcAuthentication()
-//                .dataSource(datasource)
-//                .passwordEncoder(NoOpPasswordEncoder.getInstance())
-//                .usersByUsernameQuery("select name, pass from worker where name = ?")
-//                .groupAuthoritiesByUsername("select name, pass from worker where name = ?, pass = ?");
-//    }
-//
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception
-//    {
-//        auth.jdbcAuthentication()
-//                .dataSource(datasource)
-//            .passwordEncoder(NoOpPasswordEncoder.getInstance())
-//            .usersByUsernameQuery("select name, pass from worker where name = ?")
-//            .groupAuthoritiesByUsername("select name, pass from worker where name = ?, pass = ?");
-//    }
-
-//    @Bean
-//    @Override
-//    public UserDetailsService userDetailsService()
-//    {
-//        UserDetails user =
-//                User.withDefaultPasswordEncoder()
-//                        .username("user")
-//                        .password("password")
-//                        .roles("USER")
-//                        .build();
-//
-//        return new InMemoryUserDetailsManager(user);
-//    }
 }

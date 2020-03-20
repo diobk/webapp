@@ -25,7 +25,6 @@ public class WorkerService
 
     public Worker findByName(String name)
     {
-        System.out.println(name);
         return workersRepo.findByName(name);
     }
 }

@@ -30,8 +30,8 @@
         {
             var x = new XMLHttpRequest();
             x.open("GET", "http://localhost:8080/delworker/" + id, true);
-            x.onload = function (){
-                // alert( x.responseText);
+            x.onload = function ()
+            {
                 location.reload();
             }
             x.send(null);
