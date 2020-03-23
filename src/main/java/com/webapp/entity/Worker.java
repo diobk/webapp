@@ -5,7 +5,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -45,7 +47,7 @@ public class Worker implements UserDetails
         this.departments = departments;
     }
 
-    public Worker(Long id, String name, String lastname, String password, String post, Set<Role> roles, Set<Department> departments)
+    public Worker(long id, String name, String lastname, String password, String post, Set<Role> roles, Set<Department> departments)
     {
         this.id = id;
         this.name = name;

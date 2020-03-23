@@ -5,12 +5,15 @@ import com.webapp.entity.Department;
 import com.webapp.entity.Role;
 import com.webapp.entity.Worker;
 import com.webapp.repo.WorkerRepo;
+import org.hibernate.mapping.Collection;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
+import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 @Controller
 public class AddController
@@ -25,7 +28,6 @@ public class AddController
     public void getAdd()
     {
         workerRepo.save(new Worker("Имя1", "Фамилия", passwordEncoder.encode("password"), "Генеральный директор", Collections.singleton(Role.GEN_DIR), Collections.singleton(Department.GEN_DEP)));
-
 
         workerRepo.save(new Worker("Имя2", "Фамилия", passwordEncoder.encode("password"), "IT директор", Collections.singleton(Role.DIR), Collections.singleton(Department.WEB_DEP)));
         workerRepo.save(new Worker("Имя3", "Фамилия", passwordEncoder.encode("password"), "Директор финансов", Collections.singleton(Role.DIR), Collections.singleton(Department.FINANCE_DEP)));

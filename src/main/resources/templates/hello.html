@@ -1,12 +1,20 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
-      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
 <body>
-    <h1 th:text="${ 'Hello ' + worker.name }"></h1> <br>
-    <h1 th:text="${ worker.getRoles() }"></h1> <br>
+<!--    <h1 th:text="${ 'Hello ' + worker.name }"></h1> <br>-->
+<!--    <h1 th:text="${ worker.getRoles() }"></h1> <br>-->
+
+<!--    <th:block th:each="role : ${ worker.roles }" th:if="${ role == T(com.webapp.entity.Role).WORKER  }">-->
+<!--        <h1 th:text="${ 'assffas' + role}"></h1>-->
+<!--    </th:block>-->
+
+
 </body>
 </html>
+
+<!--T(com.webapp.entity.Role).WORKER-->

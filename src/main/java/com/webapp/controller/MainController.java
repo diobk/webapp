@@ -4,11 +4,14 @@ import com.webapp.entity.Department;
 import com.webapp.entity.Role;
 import com.webapp.entity.Worker;
 import com.webapp.repo.WorkerRepo;
+import org.hibernate.mapping.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+
+import java.util.ArrayList;
 
 @Controller
 public class MainController
@@ -38,6 +41,13 @@ public class MainController
     public String  getHello(@AuthenticationPrincipal Worker worker, Model model)
     {
         model.addAttribute("worker", worker);
+        return "hello";
+    }
+
+    @GetMapping("/index")
+    public String getIndex(Model model, @AuthenticationPrincipal Worker worker)
+    {
+
         return "hello";
     }
 }

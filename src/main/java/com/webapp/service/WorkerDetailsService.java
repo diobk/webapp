@@ -25,11 +25,15 @@ public class WorkerDetailsService implements UserDetailsService
     public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException
     {
         System.out.println(123);
+        System.out.println(name);
+        System.out.println(workerRepo == null);
         Worker worker = workerRepo.findByName(name);
 
         if (worker == null)
+        {
+            System.out.println("asfdsfa");
             throw new UsernameNotFoundException("not found user with " + name);
-
+        }
         return worker;
 //        return new User(worker.getName(), worker.getPassword(), getAuthorities(worker));
     }
