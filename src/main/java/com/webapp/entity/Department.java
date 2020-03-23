@@ -1,8 +1,5 @@
 package com.webapp.entity;
 
-
-
-
 public enum Department
 {
     GEN_DEP,

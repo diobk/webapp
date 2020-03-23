@@ -19,7 +19,9 @@ public class Worker implements UserDetails
 
     private String lastname;
 
-    private String pass;
+    private String password;
+
+    private String post;
 
     @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
     @CollectionTable(name = "worker_role", joinColumns = @JoinColumn(name = "worker_id"))
@@ -27,30 +29,39 @@ public class Worker implements UserDetails
     private Set<Role> roles;
 
     @ElementCollection(targetClass = Department.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "worker_department", joinColumns = @JoinColumn(name = "worker_id"))
+    @CollectionTable(name = "worker_dep", joinColumns = @JoinColumn(name = "worker_id"))
     @Enumerated(EnumType.STRING)
     private Set<Department> departments;
 
-    private String post;
-
     public Worker() { }
 
-    public Worker(String name, String lastname, String pass, String post, Set<Role> roles, Set<Department> departments)
+    public Worker(String name, String lastname, String password, String post, Set<Role> roles, Set<Department> departments)
     {
         this.name = name;
         this.lastname = lastname;
-        this.pass = pass;
+        this.password = password;
+        this.post = post;
         this.roles = roles;
         this.departments = departments;
-        this.post = post;
     }
 
-    public Long getId()
+    public Worker(Long id, String name, String lastname, String password, String post, Set<Role> roles, Set<Department> departments)
+    {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.password = password;
+        this.post = post;
+        this.roles = roles;
+        this.departments = departments;
+    }
+
+    public long getId()
     {
         return id;
     }
 
-    public void setId(Long id)
+    public void setId(long id)
     {
         this.id = id;
     }
@@ -65,6 +76,16 @@ public class Worker implements UserDetails
         this.name = name;
     }
 
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
+    }
+
     public String getLastname()
     {
         return lastname;
@@ -75,14 +96,14 @@ public class Worker implements UserDetails
         this.lastname = lastname;
     }
 
-    public String getPass()
+    public String getPost()
     {
-        return pass;
+        return post;
     }
 
-    public void setPass(String pass)
+    public void setPost(String post)
     {
-        this.pass = pass;
+        this.post = post;
     }
 
     public Set<Role> getRoles()
@@ -105,16 +126,6 @@ public class Worker implements UserDetails
         this.departments = departments;
     }
 
-    public String getPost()
-    {
-        return post;
-    }
-
-    public void setPost(String post)
-    {
-        this.post = post;
-    }
-
     @Override
     public String toString()
     {
@@ -122,52 +133,46 @@ public class Worker implements UserDetails
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", lastname='" + lastname + '\'' +
-                ", pass='" + pass + '\'' +
+                ", password='" + password + '\'' +
+                ", post='" + post + '\'' +
                 ", roles=" + roles +
                 ", departments=" + departments +
-                ", post='" + post + '\'' +
                 '}';
     }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities()
     {
-        return null;
-    }
-
-    @Override
-    public String getPassword()
-    {
-        return null;
+        return getRoles();
     }
 
     @Override
     public String getUsername()
     {
-        return null;
+        return getName();
     }
 
     @Override
     public boolean isAccountNonExpired()
     {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isAccountNonLocked()
     {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isCredentialsNonExpired()
     {
-        return false;
+        return true;
     }
 
     @Override
     public boolean isEnabled()
     {
-        return false;
+        return true;
     }
 }

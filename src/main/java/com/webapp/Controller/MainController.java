@@ -1,44 +1,43 @@
-package com.webapp.Controller;
+package com.webapp.controller;
 
+import com.webapp.entity.Department;
 import com.webapp.entity.Role;
-import com.webapp.service.WorkerService;
+import com.webapp.entity.Worker;
+import com.webapp.repo.WorkerRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.User;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-
 
 @Controller
 public class MainController
 {
     @Autowired
-    private WorkerService workerService;
+    WorkerRepo workerRepo;
 
     @GetMapping("/main")
-    public String getMain(Model model)
+    public String getMain(@AuthenticationPrincipal Worker worker, Model model)
     {
+        model.addAttribute("gen_dir", workerRepo.findAllByRoles(Role.GEN_DIR).get(0));
 
-        model.addAttribute("gen_dir", workerService.findAllByRoles(Role.GEN_DIR).get(0));
+        model.addAttribute("Dir", workerRepo.findAllByRoles(Role.DIR));
 
-        model.addAttribute("Dir", workerService.findAllByRoles(Role.DIR));
+        model.addAttribute("Lead", workerRepo.findAllByRoles(Role.LEAD));
 
-        model.addAttribute("Lead", workerService.findAllByRoles(Role.LEAD));
+        model.addAttribute("Worker", workerRepo.findAllByRoles(Role.WORKER));
 
-        model.addAttribute("Worker", workerService.findAllByRoles(Role.WORKER));
+        model.addAttribute("AllWorker", workerRepo.findAll());
 
-        model.addAttribute("AllWorker", workerService.findAll());
+        model.addAttribute("authWorker", worker);
 
-        return "index";
+        return "main";
     }
 
-    @GetMapping("/home")
-    public String getHome(Model model)
+    @GetMapping("/hello")
+    public String  getHello(@AuthenticationPrincipal Worker worker, Model model)
     {
-        User user = (User) SecurityContextHolder.getContext().getAuthentication();
-        model.addAttribute("user", user);
-        return "home";
+        model.addAttribute("worker", worker);
+        return "hello";
     }
 }

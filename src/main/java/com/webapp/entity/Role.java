@@ -1,8 +1,12 @@
 package com.webapp.entity;
 
 
+import org.springframework.security.core.GrantedAuthority;
 
-public enum Role
+import javax.persistence.*;
+
+
+public enum Role implements GrantedAuthority
 {
     GEN_DIR,
 
@@ -10,5 +14,11 @@ public enum Role
 
     LEAD,
 
-    WORKER
+    WORKER;
+
+    @Override
+    public String getAuthority()
+    {
+        return name();
+    }
 }
