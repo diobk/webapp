@@ -92,14 +92,16 @@
                                 </th:block></th:block>
                             </th:block></th:block>
 
-                            <th:block  th:each="authRole : ${ authWorker.roles }"><th:block th:each="workerRole : ${ worker.roles }">
-                                <th:block  th:each="authDep : ${ authWorker.departments }"><th:block th:each="workerDep : ${ worker.departments }">
-                                    <th:block th:if="${ authRole == T(com.webapp.entity.Role).GEN_DIR || (authRole == T(com.webapp.entity.Role).DIR && authDep == workerDep ) ||
+                            <th:block th:unless="${worker.id == authWorker.id}">
+                                <th:block  th:each="authRole : ${ authWorker.roles }"><th:block th:each="workerRole : ${ worker.roles }">
+                                    <th:block  th:each="authDep : ${ authWorker.departments }"><th:block th:each="workerDep : ${ worker.departments }">
+                                        <th:block th:if="${ authRole == T(com.webapp.entity.Role).GEN_DIR || (authRole == T(com.webapp.entity.Role).DIR && authDep == workerDep ) ||
                                     (authRole == T(com.webapp.entity.Role).LEAD && authDep == workerDep) }" >
-                                        <a th:href="@{'/delworker/' + ${worker.id} }"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
-                                    </th:block>
+                                            <a th:href="@{'/delworker/' + ${worker.id} }"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
+                                        </th:block>
+                                    </th:block></th:block>
                                 </th:block></th:block>
-                            </th:block></th:block>
+                            </th:block>
                         </div>
                     </div>
                 </div>

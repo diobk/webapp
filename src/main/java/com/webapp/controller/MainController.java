@@ -44,10 +44,10 @@ public class MainController
         return "hello";
     }
 
-    @GetMapping("/index")
+    @GetMapping("/")
     public String getIndex(Model model, @AuthenticationPrincipal Worker worker)
     {
-
-        return "hello";
+//        model.addAttribute("auth", worker);
+        return "redirect:/main";
     }
 }

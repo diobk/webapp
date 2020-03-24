@@ -22,7 +22,6 @@ public class DeleteController
         System.out.println(workerRepo.findById(id).get().toString());
         workerRepo.delete(workerRepo.findById(id).get());
 
-
         return "redirect:/main";
     }
 }
