@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset='utf-8'/>
+    <title>Title</title>
+    <link rel='stylesheet' type='text/css' media='screen' href='css/style.css'/>
+    <link rel="stylesheet" type="text/css" href="css/style1.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css"
+          integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
+    <script src="/static/js/main.js"></script>
+
+</head>
+
+<body>
+
+<div><div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <!--        <a class="navbar-brand" href="#">Navbar</a>-->
+        <!--        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">-->
+        <!--            <span class="navbar-toggler-icon"></span>-->
+        <!--        </button>-->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" href="/main">main </a>
+                </li>
+
+                <li class="nav-item">
+
+
+                    <a class="nav-link" href="/addworker">add worker </a>
+
+
+                </li>
+
+                <li class="nav-item">
+
+
+                    <a class="nav-link" href="/logout">logout</a>
+
+
+
+                </li>
+
+            </ul>
+        </div>
+    </nav>
+</div></div>
+
+<div class="tree">
+
+    <ul>
+        <li  id="orgStruct"><a href="#" onclick="viewDiv(&#39;div1&#39;);">qq<br/>qq qq</a>
+            <ul>
+
+
+
+                <li><a href="#" onclick="viewDiv(&#39;div2&#39;);">q<br/>q q</a>
+
+
+
+                    <ul>
+
+                        <li ><a href="#" onclick="viewDiv(&#39;div5&#39;);">q<br/>q q</a>
+
+
+                            <ul>
+                                <a href="#"
+                                   onclick="viewDiv(&#39;div8&#39;);">q<br/>q q</a>
+                            </ul>
+
+
+                        </li>
+
+                    </ul>
+
+
+
+                    <ul>
+
+                        <li ><a href="#" onclick="viewDiv(&#39;div5&#39;);">q<br/>q q</a>
+
+
+                            <ul>
+                                <a href="#"
+                                   onclick="viewDiv(&#39;div8&#39;);">q<br/>q q</a>
+                            </ul>
+
+
+                        </li>
+
+                    </ul>
+
+
+
+                </li>
+
+
+
+                <li><a href="#" onclick="viewDiv(&#39;div3&#39;);">q<br/>q q</a>
+
+
+
+                </li>
+
+
+
+                <li><a href="#" onclick="viewDiv(&#39;div4&#39;);">q<br/>q q</a>
+
+
+
+                    <ul>
+
+                        <li ><a href="#" onclick="viewDiv(&#39;div7&#39;);">q<br/>q q</a>
+
+
+                            <ul>
+                                <a href="#"
+                                   onclick="viewDiv(&#39;div10&#39;);">q<br/>q q</a>
+                            </ul>
+
+
+                        </li>
+
+                    </ul>
+
+
+
+                </li>
+
+
+
+            </ul>
+        </li>
+    </ul>
+
+</div>
+
+
+<div onclick="notViewDiv(&#39;div1&#39;);">
+    <div class="div1 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div1&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>qq</label> <br/><br/>
+                    <label>qq</label> <br/><br/>
+                    <label>qq</label> <br/><br/>
+                    <label>[GEN_DIR]</label> <br/><br/>
+                    <label>[GEN_DEP]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+
+
+                    <a href="/update/1"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
+
+
+
+
+
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div onclick="notViewDiv(&#39;div2&#39;);">
+    <div class="div2 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div2&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>[DIR]</label> <br/><br/>
+                    <label>[WEB_DEP]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+
+
+                    <a href="/update/2"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <a href="/delworker/2"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div onclick="notViewDiv(&#39;div3&#39;);">
+    <div class="div3 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div3&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>[DIR]</label> <br/><br/>
+                    <label>[FINANCE_DEP]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+
+
+                    <a href="/update/3"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <a href="/delworker/3"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div onclick="notViewDiv(&#39;div4&#39;);">
+    <div class="div4 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div4&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>[DIR]</label> <br/><br/>
+                    <label>[PERSONAL_DEP]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+
+
+                    <a href="/update/4"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <a href="/delworker/4"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div onclick="notViewDiv(&#39;div5&#39;);">
+    <div class="div5 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div5&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>[LEAD]</label> <br/><br/>
+                    <label>[WEB_DEP]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+
+
+                    <a href="/update/5"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <a href="/delworker/5"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div onclick="notViewDiv(&#39;div6&#39;);">
+    <div class="div6 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div6&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>[]</label> <br/><br/>
+                    <label>[FINANCE_DEP]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div onclick="notViewDiv(&#39;div7&#39;);">
+    <div class="div7 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div7&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>[LEAD]</label> <br/><br/>
+                    <label>[PERSONAL_DEP]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+
+
+                    <a href="/update/7"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <a href="/delworker/7"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div onclick="notViewDiv(&#39;div8&#39;);">
+    <div class="div8 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div8&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>[WORKER]</label> <br/><br/>
+                    <label>[WEB_DEP]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+
+
+                    <a href="/update/8"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <a href="/delworker/8"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div onclick="notViewDiv(&#39;div9&#39;);">
+    <div class="div9 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div9&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>[WORKER]</label> <br/><br/>
+                    <label>[FINANCE_DEP]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+
+
+                    <a href="/update/9"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <a href="/delworker/9"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div onclick="notViewDiv(&#39;div10&#39;);">
+    <div class="div10 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div10&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>[WORKER]</label> <br/><br/>
+                    <label>[PERSONAL_DEP]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+
+
+                    <a href="/update/10"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
+
+
+
+
+
+
+
+
+
+
+
+
+                    <a href="/delworker/10"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div onclick="notViewDiv(&#39;div11&#39;);">
+    <div class="div11 window" >
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="notViewDiv(&#39;div11&#39;);" >
+                        <span aria-hidden="true">      </span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>q</label> <br/><br/>
+                    <label>[]</label> <br/><br/>
+                    <label>[]</label> <br/><br/>
+                </div>
+                <div class="modal-footer">
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

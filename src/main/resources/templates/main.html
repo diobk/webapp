@@ -3,13 +3,13 @@
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 
 <head>
-    <meta charset='utf-8'>
+    <meta charset='utf-8'/>
     <title>Title</title>
     <link rel='stylesheet' type='text/css' media='screen' href='../static/css/style.css'/>
     <link rel="stylesheet" type="text/css" href="../static/css/style1.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.4/css/bootstrap.min.css"
-          integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+          integrity="2hfp1SzUoho7/TsGGGDaFdsuuDL0LX2hnUp6VkX3CUQ2K4K+xjboZdsXyp4oUHZj" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
@@ -24,27 +24,27 @@
 <div class="tree">
 
     <ul>
-        <li><a href="#" th:utext="${ gen_dir.post + '<br>' + gen_dir.name + ' ' + gen_dir.lastname}"
+        <li  id="orgStruct"><a href="#" th:utext="${ gen_dir.post + '<br/>' + gen_dir.name + ' ' + gen_dir.lastname}"
                th:attr="onclick=|viewDiv('${ 'div' + gen_dir.id}');|"></a>
             <ul>
 
                 <th:block th:each="dir : ${ Dir }">
 
-                    <li><a href="#" th:utext=" ${ dir.post + '<br>' + dir.name + ' ' + dir.lastname } "
+                    <li><a href="#" th:utext=" ${ dir.post + '<br/>' + dir.name + ' ' + dir.lastname } "
                            th:attr="onclick=|viewDiv('${ 'div' + dir.id}');|"></a>
 
                         <th:block th:each="lead : ${ Lead }" th:if="${lead.departments == dir.departments}">
 
                             <ul>
 
-                                <li ><a href="#" th:utext=" ${ lead.post + '<br>' + lead.name + ' ' + lead.lastname } "
+                                <li ><a href="#" th:utext=" ${ lead.post + '<br/>' + lead.name + ' ' + lead.lastname } "
                                         th:attr="onclick=|viewDiv('${ 'div' + lead.id}');|"></a>
 
                                     <th:block th:each="worker : ${ Worker }" th:if="${ worker.departments == lead.departments }">
                                         <ul>
                                             <a href="#"
                                                th:attr="onclick=|viewDiv('${ 'div' + worker.id}');|"
-                                               th:utext="${ worker.post + '<br>' + worker.name + ' ' + worker.lastname }"></a>
+                                               th:utext="${ worker.post + '<br/>' + worker.name + ' ' + worker.lastname }"></a>
                                         </ul>
                                     </th:block>
 
@@ -72,35 +72,43 @@
                         <div class="modal-header">
                             <h4 class="modal-title" id="myModalLabel">Modal title</h4>
                             <button type="button" class="close" data-dismiss="modal" aria-label="Close" th:attr="onclick=|notViewDiv('${ 'div' + worker.id}');|" >
-                                <span aria-hidden="true">&times</span>
+                                <span aria-hidden="true">      </span>
                             </button>
                         </div>
                         <div class="modal-body">
-                            <label th:utext="${worker.name }"></label> <br><br>
-                            <label th:utext="${worker.lastname }"></label> <br><br>
-                            <label th:utext="${worker.post }"></label> <br><br>
-                            <label th:utext="${worker.roles }"></label> <br><br>
-                            <label th:utext="${worker.departments }"></label> <br><br>
+                            <label th:utext="${worker.name }"></label> <br/><br/>
+                            <label th:utext="${worker.lastname }"></label> <br/><br/>
+                            <label th:utext="${worker.post }"></label> <br/><br/>
+                            <label th:utext="${worker.roles }"></label> <br/><br/>
+                            <label th:utext="${worker.departments }"></label> <br/><br/>
                         </div>
                         <div class="modal-footer">
-                            <th:block  th:each="authRole : ${ authWorker.roles }"><th:block th:each="workerRole : ${ worker.roles }">
-                                <th:block  th:each="authDep : ${ authWorker.departments }"><th:block th:each="workerDep : ${ worker.departments }">
-                                    <th:block th:if="${ authRole == T(com.webapp.entity.Role).GEN_DIR || (authRole == T(com.webapp.entity.Role).DIR && authDep == workerDep ) ||
+                            <th:block th:each="wRole : ${worker.roles}">
+                                <th:block th:each="aRole : ${authWorker.roles}" th:unless="${ wRole == T(com.webapp.entity.Role).DIR && aRole == T(com.webapp.entity.Role).LEAD }">
+                                    <th:block  th:each="authRole : ${ authWorker.roles }"><th:block th:each="workerRole : ${ worker.roles }">
+                                        <th:block  th:each="authDep : ${ authWorker.departments }"><th:block th:each="workerDep : ${ worker.departments }">
+                                            <th:block th:if="${ authRole == T(com.webapp.entity.Role).GEN_DIR || (authRole == T(com.webapp.entity.Role).DIR && authDep == workerDep ) ||
                                     (authRole == T(com.webapp.entity.Role).LEAD && authDep == workerDep) }" >
-                                        <a th:href="@{'/update/' + ${ worker.id } }"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
-                                    </th:block>
-                                </th:block></th:block>
-                            </th:block></th:block>
-
-                            <th:block th:unless="${worker.id == authWorker.id}">
-                                <th:block  th:each="authRole : ${ authWorker.roles }"><th:block th:each="workerRole : ${ worker.roles }">
-                                    <th:block  th:each="authDep : ${ authWorker.departments }"><th:block th:each="workerDep : ${ worker.departments }">
-                                        <th:block th:if="${ authRole == T(com.webapp.entity.Role).GEN_DIR || (authRole == T(com.webapp.entity.Role).DIR && authDep == workerDep ) ||
-                                    (authRole == T(com.webapp.entity.Role).LEAD && authDep == workerDep) }" >
-                                            <a th:href="@{'/delworker/' + ${worker.id} }"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
-                                        </th:block>
+                                                <a th:href="@{'/update/' + ${ worker.id } }"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Изменить</button></a>
+                                            </th:block>
+                                        </th:block></th:block>
                                     </th:block></th:block>
-                                </th:block></th:block>
+                                </th:block>
+                            </th:block>
+
+                            <th:block th:each="wRole : ${worker.roles}">
+                                <th:block th:each="aRole : ${authWorker.roles}" th:unless="${ wRole == T(com.webapp.entity.Role).DIR && aRole == T(com.webapp.entity.Role).LEAD }">
+                                    <th:block th:unless="${worker.id == authWorker.id}">
+                                        <th:block  th:each="authRole : ${ authWorker.roles }"><th:block th:each="workerRole : ${ worker.roles }">
+                                            <th:block  th:each="authDep : ${ authWorker.departments }"><th:block th:each="workerDep : ${ worker.departments }">
+                                                <th:block th:if="${ authRole == T(com.webapp.entity.Role).GEN_DIR || (authRole == T(com.webapp.entity.Role).DIR && authDep == workerDep ) ||
+                                    (authRole == T(com.webapp.entity.Role).LEAD && authDep == workerDep) }" >
+                                                    <a th:href="@{'/delworker/' + ${worker.id} }"><button type="button" class="btn btn-secondary" data-dismiss="modal" >Уволить</button></a>
+                                                </th:block>
+                                            </th:block></th:block>
+                                        </th:block></th:block>
+                                    </th:block>
+                                </th:block>
                             </th:block>
                         </div>
                     </div>

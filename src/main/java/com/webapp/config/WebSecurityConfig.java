@@ -29,7 +29,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
                     .antMatchers("/add", "/del").permitAll()
                     .antMatchers("/login").permitAll()
                     .antMatchers("/resources/**").permitAll()
-                    .antMatchers("/").permitAll()
                     .antMatchers("/delworker/**").hasAnyAuthority("LEAD", "DIR", "GEN_DIR")
                     .antMatchers("/update/**").hasAnyAuthority("LEAD", "DIR", "GEN_DIR")
                     .antMatchers("/addworker/**").hasAnyAuthority("LEAD", "DIR")
