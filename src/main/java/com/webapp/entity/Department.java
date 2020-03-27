@@ -1,12 +1,55 @@
 package com.webapp.entity;
 
-public enum Department
+
+import org.springframework.security.core.GrantedAuthority;
+
+import javax.persistence.*;
+import java.util.Set;
+
+@Entity
+public class Department
 {
-    GEN_DEP,
+//    GEN_DEP,
+//
+//    WEB_DEP,
+//
+//    FINANCE_DEP,
+//
+//    PERSONAL_DEP
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-    WEB_DEP,
+    private String department;
 
-    FINANCE_DEP,
+    public Department() { }
 
-    PERSONAL_DEP
+    public Department(String department) { this.department = department; }
+
+    public Department(Long id, String department)
+    {
+        this.id = id;
+        this.department = department;
+    }
+
+    public Long getId()
+    {
+        return id;
+    }
+
+    public void setId(Long id)
+    {
+        this.id = id;
+    }
+
+    public String getDepartment()
+    {
+        return department;
+    }
+
+    public void setDepartment(String department)
+    {
+        this.department = department;
+    }
 }
+

@@ -30,9 +30,10 @@ public class Worker implements UserDetails
     @Enumerated(EnumType.STRING)
     private Set<Role> roles;
 
-    @ElementCollection(targetClass = Department.class, fetch = FetchType.EAGER)
-    @CollectionTable(name = "worker_dep", joinColumns = @JoinColumn(name = "worker_id"))
-    @Enumerated(EnumType.STRING)
+//    @ElementCollection(targetClass = Department.class, fetch = FetchType.EAGER)
+//    @CollectionTable(name = "worker_dep", joinColumns = @JoinColumn(name = "worker_id"))
+//    @Enumerated(EnumType.STRING)
+    @ManyToMany
     private Set<Department> departments;
 
     public Worker() { }
