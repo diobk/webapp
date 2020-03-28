@@ -24,29 +24,77 @@
         <!--        </button>-->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
-                <li class="nav-item">
-                    <a class="nav-link" th:href="@{/main}">main </a>
-                </li>
+                <th:block th:each="role : ${ #authentication.getAuthorities() }" >
 
-                <li class="nav-item"
-                    th:each="role : ${ #authentication.getAuthorities() }">
-                    <th:block th:switch="${role}">
-                        <a th:case="${T(com.webapp.entity.Role).DIR}" class="nav-link" th:href="@{/addworker}">add worker </a>
-                        <a th:case="${T(com.webapp.entity.Role).GEN_DIR}" class="nav-link" th:href="@{/addworker}">add worker </a>
-                        <a th:case="${T(com.webapp.entity.Role).LEAD}" class="nav-link" th:href="@{/addworker}">add worker </a>
+                    <li class="nav-item">
+                        <a class="nav-link" th:href="@{/main}"> main </a>
+                    </li>
+
+                    <th:block th:if="${ role == T(com.webapp.entity.Role).GEN_DIR }">
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/addworker}">add worker</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/adddepartment}">add department</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/logout}">logout</a>
+                        </li>
+
                     </th:block>
-                </li>
 
-                <li class="nav-item"
-                    th:each="role : ${#authentication.getAuthorities()}">
-                    <th:block th:switch="${role}">
-                        <a th:case="${T(com.webapp.entity.Role).DIR}" class="nav-link" th:href="@{/logout}">logout</a>
-                        <a th:case="${T(com.webapp.entity.Role).GEN_DIR}" class="nav-link" th:href="@{/logout}">logout</a>
-                        <a th:case="${T(com.webapp.entity.Role).LEAD}" class="nav-link" th:href="@{/logout}">logout</a>
-                        <a th:case="${T(com.webapp.entity.Role).WORKER}" class="nav-link" th:href="@{/logout}">logout</a>
+                    <th:block th:if="${ role == T(com.webapp.entity.Role).DIR }">
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/addworker}">add worker</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">add department</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/logout}">logout</a>
+                        </li>
+
                     </th:block>
-                </li>
 
+                    <th:block th:if="${ role == T(com.webapp.entity.Role).LEAD }">
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/addworker}">add worker</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">add department</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/logout}">logout</a>
+                        </li>
+
+                    </th:block>
+
+                    <th:block th:if="${ role == T(com.webapp.entity.Role).WORKER }">
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">add worker</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">add department</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" th:href="@{/logout}">logout</a>
+                        </li>
+
+                    </th:block>
+
+                </th:block>
             </ul>
         </div>
     </nav>

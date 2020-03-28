@@ -51,5 +51,14 @@ public class Department
     {
         this.department = department;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Department{" +
+                "id=" + id +
+                ", department='" + department + '\'' +
+                '}';
+    }
 }
 

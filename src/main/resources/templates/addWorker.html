@@ -45,31 +45,43 @@
             </label>
         </div>
 
-<!--        <div class="form-group">-->
-<!--            <label>Role-->
-<!--                <select class="form-control" name="roles">-->
-<!--                    <th:block th:each="Role : ${ role } ">-->
-<!--                        <option th:value="${Role}" th:utext="${Role}"></option>-->
-<!--                    </th:block>>-->
-<!--                </select>-->
-<!--            </label>-->
-<!--        </div>-->
+        <th:block th:each="role : ${ auth.roles }" th:if="${ role == T(com.webapp.entity.Role).GEN_DIR}">
+            <div class="form-group">
+                <label>Role
+                    <select class="form-control" name="roles">
+                        <th:block th:each="Role : ${ roles } ">
+                            <option th:value="${Role}" th:unless="${Role == T(com.webapp.entity.Role).GEN_DIR}" th:utext="${Role.getAuthority()}"></option>
+<!--                            <option th:value="${Role}" th:utext="${Role}"></option>-->
+                        </th:block>
+                    </select>
+                </label>
+            </div>
 
-        <input type="hidden" name="roles" th:value="${ T(com.webapp.entity.Role).WORKER }"/>
-        <input type="hidden" name="departments" th:each="dep : ${ auth.departments }" th:value="${ dep }"/>
+            <div class="form-group">
+                <label>Department
+                    <select class="form-control" name="departments">
+                        <th:block th:each="Department : ${ department} ">
+                            <option th:value="${Department.department}" th:unless="${Department.department == 'GEN_DEP'}" th:utext="${Department.department}"></option>
+                        </th:block>>
+                    </select>
+                </label>
+            </div>
+        </th:block>
 
-<!--        <div class="form-group">-->
-<!--            <label>Department-->
-<!--                <select class="form-control" name="departments">-->
-<!--                    <th:block th:each="Department : ${ department } ">-->
-<!--                        <option th:value="${Department}" th:utext="${Department}"></option>-->
-<!--                    </th:block>>-->
-<!--                </select>-->
-<!--            </label>-->
-<!--        </div>-->
+        <th:block th:each="role : ${ auth.roles }" th:unless=" ${ role == T(com.webapp.entity.Role).GEN_DIR } ">
+            <input type="hidden" name="roles" th:value="${ T(com.webapp.entity.Role).WORKER }"/>
+            <input type="hidden" name="departments" th:each="dep : ${ auth.departments }" th:value="${ dep }"/>
+        </th:block>
+
+
 
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
+</div>
+
+<div class="container">
+<!--    <h4 th:text="${auth.departments}"></h4>-->
+<!--    <h4 th:each="a : ${auth.departments}" th:text="${a}"></h4>-->
 </div>
 
 </body>

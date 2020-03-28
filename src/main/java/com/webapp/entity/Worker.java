@@ -1,6 +1,7 @@
 package com.webapp.entity;
 
 
+import org.hibernate.annotations.Fetch;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
@@ -33,7 +34,7 @@ public class Worker implements UserDetails
 //    @ElementCollection(targetClass = Department.class, fetch = FetchType.EAGER)
 //    @CollectionTable(name = "worker_dep", joinColumns = @JoinColumn(name = "worker_id"))
 //    @Enumerated(EnumType.STRING)
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Department> departments;
 
     public Worker() { }
@@ -79,16 +80,6 @@ public class Worker implements UserDetails
         this.name = name;
     }
 
-    public String getPassword()
-    {
-        return password;
-    }
-
-    public void setPassword(String password)
-    {
-        this.password = password;
-    }
-
     public String getLastname()
     {
         return lastname;
@@ -97,6 +88,17 @@ public class Worker implements UserDetails
     public void setLastname(String lastname)
     {
         this.lastname = lastname;
+    }
+
+    @Override
+    public String getPassword()
+    {
+        return password;
+    }
+
+    public void setPassword(String password)
+    {
+        this.password = password;
     }
 
     public String getPost()
@@ -119,6 +121,10 @@ public class Worker implements UserDetails
         this.roles = roles;
     }
 
+    public String getDepartment()
+    {
+        return departments.iterator().next().getDepartment();
+    }
     public Set<Department> getDepartments()
     {
         return departments;

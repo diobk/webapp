@@ -10,5 +10,4 @@ public interface WorkerRepo extends JpaRepository<Worker, Long>
 {
     List<Worker> findAllByRoles(Role role);
     Worker findByName(String name);
-
 }

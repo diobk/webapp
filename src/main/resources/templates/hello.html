@@ -18,13 +18,18 @@
 
 <div th:insert="navigation :: navbar"></div>
 
-<div class="container">
-    <h3 th:text="${#authentication.name}"></h3>
-    <h3 th:text="${#authentication.isAuthenticated()}"></h3>
+<!--<div class="container">-->
+<!--    <h3 th:text="${#authentication.name}"></h3>-->
+<!--    <h3 th:text="${#authentication.isAuthenticated()}"></h3>-->
 
-    <div th:each="role : ${ #authentication.getAuthorities() } ">
-        <h1 th:text="${role}"></h1>
-    </div>
+<!--    <div th:each="role : ${ #authentication.getAuthorities() } ">-->
+<!--        <h1 th:text="${role}"></h1>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container">
+<!--        <h1 th:text="${worker.getDepartments().iterator().next()}"></h1>-->
+        <h1 th:each="dep : ${ worker.getDepartments() }" th:text="${ dep }"></h1>
 </div>
 
 </body>

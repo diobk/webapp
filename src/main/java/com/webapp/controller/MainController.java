@@ -22,6 +22,9 @@ public class MainController
     @GetMapping("/main")
     public String getMain(@AuthenticationPrincipal Worker worker, Model model)
     {
+        System.out.println(workerRepo.findByName("q").toString());
+        System.out.println(workerRepo.findByName("q").getDepartment());
+
         model.addAttribute("gen_dir", workerRepo.findAllByRoles(Role.GEN_DIR).get(0));
 
         model.addAttribute("Dir", workerRepo.findAllByRoles(Role.DIR));
@@ -40,6 +43,7 @@ public class MainController
     @GetMapping("/hello")
     public String  getHello(@AuthenticationPrincipal Worker worker, Model model)
     {
+        System.out.println(worker.toString());
         model.addAttribute("worker", worker);
         return "hello";
     }
